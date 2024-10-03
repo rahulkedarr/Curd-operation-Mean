@@ -6,7 +6,9 @@ import { StudentCreateComponent } from './student-create/student-create.componen
 const routes: Routes = [
   { path:"" , redirectTo: 'students', pathMatch: 'full'},
   {path:"students", component:StudentsComponent},
-  {path:"students/create", component:StudentCreateComponent}
+  {path:"students/create", component:StudentCreateComponent},
+  {path:"students/:id", component:StudentCreateComponent}
+
 ];
 
 @NgModule({

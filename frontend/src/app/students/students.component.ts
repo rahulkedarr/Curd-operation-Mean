@@ -16,4 +16,25 @@ ngOnInit(){
     this.students = res;
   })
 }
+
+deleteStudent(id:string){
+  const ok= confirm("are you sure want to delete data");
+  if(ok){
+    this.studentService.deleteStudent(id).subscribe((res)=>{
+      alert("student data deleted")
+      this.students= this.students.filter(res=>res._id!=id)
+    })
+  }
+}
+
+deleteAllStudents(){
+  const ok= confirm("are you sure want to delete data");
+  if(ok){
+    this.studentService.deleteAllStudents().subscribe((res)=>{
+      alert("student data deleted")
+      this.students = []; 
+      this.noData = true; 
+    })
+  }
+}
 }

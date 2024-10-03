@@ -1,6 +1,6 @@
 <div class="my-5">
-  <h2 class="text-center mb-3">Create Student</h2>
-  <form [formGroup]="dataForm" (ngSubmit)="createStudent()" class="card m-auto w-50">
+  <h2 class="text-center mb-3">{{editStudentId == null? 'Create Student' : 'Update Student'}}</h2>
+  <form [formGroup]="dataForm" class="card m-auto w-50">
     <div class="form-group m-2">
       <label for="name">Name: <span class="require">*</span></label>
       <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter your name" />
@@ -18,7 +18,8 @@
       <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter password" />
     </div>
     <div class="m-5 text-center">
-      <button type="submit" class="btn btn-primary" [disabled]="dataForm.invalid">Add Student</button>
+      <button type="submit" class="btn btn-primary" *ngIf="editStudentId" (click)="updateStudent()" >Update</button>
+      <button type="button" class="btn btn-primary" (click)="createStudent()" [disabled]="dataForm.invalid" *ngIf="!editStudentId">Add</button>
     </div>
   </form>
 </div>
