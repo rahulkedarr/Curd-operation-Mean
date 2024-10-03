@@ -1,0 +1,24 @@
+<div class="my-5">
+  <h2 class="text-center mb-3">Create Student</h2>
+  <form [formGroup]="dataForm" (ngSubmit)="createStudent()" class="card m-auto w-50">
+    <div class="form-group m-2">
+      <label for="name">Name: <span class="require">*</span></label>
+      <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter your name" />
+    </div>
+    <div class="form-group m-2">
+      <label for="age">Age: <span class="require">*</span></label>
+      <input type="number" id="age" formControlName="age" class="form-control" placeholder="Enter your age" />
+    </div>
+    <div class="form-group m-2">
+      <label for="email">Email: <span class="require">*</span></label>
+      <input type="email" id="email" formControlName="email" class="form-control" placeholder="Enter valid email">
+    </div>
+    <div class="form-group m-2">
+      <label for="password">Password: <span class="require">*</span></label>
+      <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter password" />
+    </div>
+    <div class="m-5 text-center">
+      <button type="submit" class="btn btn-primary" [disabled]="dataForm.invalid">Add Student</button>
+    </div>
+  </form>
+</div>

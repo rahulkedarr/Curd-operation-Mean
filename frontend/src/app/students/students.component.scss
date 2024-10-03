@@ -1,0 +1,11 @@
+.table-striped tbody tr:nth-of-type(odd){
+    background-color: #DEEBF7;
+}
+thead{
+    background-color: #408BC9;
+    color: #fff;
+}
+
+.table {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}  

@@ -1,0 +1,36 @@
+form {
+    position: relative;
+    padding: 30px;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  form:hover {
+    transform: translateZ(10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+  
+  .form-control {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+  }
+  
+  .btn-primary {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border-radius: 30px;
+  }
+  
+  .require{
+    color: red;
+  }
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
