@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import Student from '../model/student.model';
 
@@ -32,5 +32,9 @@ export class StudentService {
 
   deleteAllStudents() {
     return this.http.delete(this.apiUrl + 'api/student/');
+  }
+
+  searchStudents(name: string) {
+    return this.http.get<Student[]>(`${this.apiUrl}api/student/?Name=${name}`);
   }
 }

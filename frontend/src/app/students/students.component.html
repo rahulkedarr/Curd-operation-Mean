@@ -1,10 +1,23 @@
-<div *ngIf="noData || students.length === 0"  class="alert alert-danger text-center m-5" role="alert">No Data Found</div>
-<h2 class="text-center mt-5 mb-3 col" *ngIf="!(noData || students.length === 0)">Student List</h2> 
+<div *ngIf="noData || students.length === 0" class="alert alert-danger text-center m-5" role="alert">
+  No Data Found
+</div>
+<div class="my-5">
+  <h2 class="text-center mt-5 mb-3 col" *ngIf="!(noData || students.length === 0)">
+    Student List
+  </h2>
+  <div class="container mb-5" *ngIf="!(noData || students.length === 0)">
+    <button class="btn mb-3 p-2 btn-sm btn-danger float-right" (click)="deleteAllStudents()">
+      All Student Delete
+    </button>
 
-<div class="container  mb-5" *ngIf="!(noData || students.length === 0)">
-  <button class="btn  mb-3 p-2 btn-sm btn-danger float-right" (click)="deleteAllStudents()">All Student Delete</button>
+    <!-- Search Bar -->
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="searchTerm"
+        (input)="onSearch()" />
+    </div>
+
     <table class="table table-striped table table-bordered">
-      <thead style="background-color: #007bff; color: white;">
+      <thead style="background-color: #007bff; color: white">
         <tr>
           <th>Name</th>
           <th>Age</th>
@@ -14,16 +27,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let student of students">
+        <tr *ngFor="let student of filteredStudents">
           <td>{{ student.name }}</td>
           <td>{{ student.age }}</td>
           <td>{{ student.email }}</td>
           <td>{{ student.password }}</td>
           <td class="text-center">
-            <button class="btn btn-sm btn-primary" [routerLink]="'/students/'+student._id">Edit</button>
-            <button class="btn ml-2 btn-sm btn-danger" (click)="deleteStudent(student._id!)">Delete</button>
+            <button class="btn btn-sm btn-primary" [routerLink]="'/students/' + student._id">
+              Edit
+            </button>
+            <button class="btn ml-2 btn-sm btn-danger" (click)="deleteStudent(student._id!)">
+              Delete
+            </button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
+</div>

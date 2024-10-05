@@ -38,10 +38,21 @@ app.post('/api/student',async(req,res)=>{
   }
 });
 
-//api for show all student
-app.get('/api/student',async(req,res)=>{
-  const allStudents= await Student.find();
-  res.send(allStudents)
+// api for get and search student
+app.get('/api/student', async (req, res) => {
+  try {
+    const name = req.query.Name;
+
+    if (name) {
+      const students = await Student.find({ name: { $regex: new RegExp(name, 'i') } });
+      res.json(students);
+    } else {
+      const students = await Student.find();
+      res.json(students);
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while fetching students' });
+  }
 });
 
 //api to show student on basic of id
@@ -70,23 +81,6 @@ app.delete('/api/student/:id',async(req,res)=>{
 app.delete('/api/student',async(req,res)=>{
   const deleteAllStudent= await Student.deleteMany({});
   res.send(deleteAllStudent)
-});
-
-app.get('/api/search', async (req, res) => {
-  try {
-    const { Name } = req.query; 
-    if (!Name) {
-      return res.json({ message: 'Name query parameter is required.' });
-    }
-    const students = await Student.find({ name: { $regex: Name, $options: 'i' } });
-
-    if (students.length === 0) {
-      return res.json({ message: 'No students found with the given name.' });
-    }
-    res.json(students);
-  } catch (error) {
-    res.status(500).json({ message: 'Server error', error });
-  }
 });
 
 app.listen(port, () => {
